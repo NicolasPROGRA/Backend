@@ -1,0 +1,17 @@
+inicializacion paso a paso desde 0
+
+git config --global user.name "Marco Calfileo"
+git config --global user.email marco.calfileo@gmail.com
+pip install virtualenv
+python -m pip install virtualenv
+virtualenv ambiente
+.\ambiente\Scripts\activate.ps1
+ si no deja Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass python.exe -m pip 
+ install --upgrade pip 
+pip install django
+django-admin startproject drf (pv) 
+django-admin startapp primera_app (pv) 
+pip install mysqlclient 
+ python manage.py migrate
+  python manage.py makemigrations
+   python manage.py migrate
