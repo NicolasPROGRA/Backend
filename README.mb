@@ -12,6 +12,6 @@ pip install django
 django-admin startproject drf (pv) 
 django-admin startapp primera_app (pv) 
 pip install mysqlclient 
- python manage.py migrate
-  python manage.py makemigrations
-   python manage.py migrate
+python manage.py migrate
+python manage.py makemigrations
+python manage.py migrate
