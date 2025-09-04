@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'drf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'iei_171_n4',
+        'NAME': 'bd_backend_nc',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
