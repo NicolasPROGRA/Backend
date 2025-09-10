@@ -15,3 +15,6 @@ pip install mysqlclient
 python manage.py migrate
 python manage.py makemigrations
 python manage.py migrate
+
+
+(PROFESOR AL IR A MI RESPOSITORIO SELECCIONE LA RAMA "evaluacion 1" ES LA QUE NO TIENE AVANCES  :) )
