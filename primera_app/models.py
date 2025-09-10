@@ -15,7 +15,7 @@ class Nacionalidad(models.Model):
 
 class Autor(models.Model):
     id_nacionalidad = models.ForeignKey(
-        Nacionalidad, on_delete=models.CASCADE, null=True)
+    Nacionalidad, on_delete=models.CASCADE, null=True)
     nombre = models.CharField(max_length=250, null=False)
     pseudonimo = models.CharField(max_length=50, null=True)
     biografia = models.TextField(null=True)
@@ -55,9 +55,9 @@ class Lector(models.Model):
     Biblioteca, on_delete=models.CASCADE, null=False)
     id_direccion = models.ForeignKey(
     Direccion, on_delete=models.CASCADE, null=True)
-    rut_lector = models.IntegerField(null=False, unique=True)
+    rut_lector = models.IntegerField(null=False, unique=True, default=1)
     digito_verificador = models.CharField(max_length=1, null=False)
-    nombre_lector = models.CharField(max_length=255, null=False)
+    nombre_lector = models.CharField(max_length=255, null=False, default="")
     correo_lector = models.CharField(max_length=255, null=True)
     habilitado = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=ahora)
@@ -90,7 +90,7 @@ class Libro(models.Model):
     titulo = models.CharField(max_length=255, null=False)
     paginas = models.IntegerField(null=False)
     copias = models.IntegerField(null=False)
-    ubicacion = models.CharField(max_length=255, null=False)
+    ubicacion = models.CharField(max_length=255, null=False, default="")
     fisico = models.BooleanField(default=True)
     habilitado = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=ahora)
