@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Empresa - Soluciones Profesionales</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">TuEmpresa</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Soluciones Innovadoras</h1>
+                <p>Transformamos ideas en realidad con tecnología de vanguardia</p>
+                <a href="#servicios" class="cta-button">Conocer Más</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="servicios" class="content-section">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Desarrollo Web</h3>
+                    <p>Creamos sitios web modernos y responsivos que destacan en el mercado digital actual.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Apps Móviles</h3>
+                    <p>Desarrollamos aplicaciones móviles intuitivas para iOS y Android.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Implementamos soluciones en la nube escalables y seguras para tu negocio.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>150+</h3>
+                        <p>Proyectos Completados</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Clientes Satisfechos</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>5</h3>
+                        <p>Años de Experiencia</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Soporte Técnico</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📧 info@tuempresa.com</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📍 123 Calle Principal, Ciudad</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <p><a href="#">Desarrollo Web</a></p>
+                    <p><a href="#">Apps Móviles</a></p>
+                    <p><a href="#">Consultoría IT</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <p><a href="#">Política de Privacidad</a></p>
+                    <p><a href="#">Términos de Servicio</a></p>
+                    <p><a href="#">Blog</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TuEmpresa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'javascript/script.js' %}"></script>
+</body>
+</html>
