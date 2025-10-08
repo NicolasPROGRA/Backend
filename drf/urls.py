@@ -20,6 +20,6 @@ from primera_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.pagina_inicio, name='home'),
+    path('', views.pagina_html, name='home'),
     path('primera_app/', include ('primera_app.urls'))
 ]

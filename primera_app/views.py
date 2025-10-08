@@ -54,3 +54,8 @@ class LibroViewSet(viewsets.ModelViewSet):
 class PrestamoViewSet(viewsets.ModelViewSet):
     queryset = Prestamo.objects.all()
     serializer_class = Prestamo_Serializer
+
+
+
+def pagina_html(request):
+    return render(request, 'pagina.html')
