@@ -59,3 +59,4 @@ class PrestamoViewSet(viewsets.ModelViewSet):
 
 def pagina_html(request):
     return render(request, 'pagina.html')
+
