@@ -1,108 +1,106 @@
-{% load static %}
+{% load static %}{% load iconic %}
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Empresa - Soluciones Profesionales</title>
-</head>
-<body>
+<html lang="es" xml:lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{% block title %}Gestión Biblioteca{% endblock %}</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
+  </head>
+
+  <body>
     <header>
-        <nav class="container">
-            <div class="logo">TuEmpresa</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            >{% iconic_icon "table-columns" size=50 %}</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarColor02"
+            aria-controls="navbarColor02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#"
+                  >Inicio
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Autores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Libros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Lectores</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >Configuración</a
+                >
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Datos Biblioteca</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </li>
             </ul>
-        </nav>
+            {% comment %}
+            <form class="d-flex">
+              <input
+                class="form-control me-sm-2"
+                type="search"
+                placeholder="Búsqueda"
+              />
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+                Buscar
+              </button>
+            </form>
+            {% endcomment %}
+            <a href="{% url 'logout' %}" class="logout nav-link"
+              >Salir {% iconic_icon "log-out" %}</a
+            >
+          </div>
+        </div>
+      </nav>
+      {% block cabecera %}
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1>Sistema de Gestión de Biblioteca</h1>
+        </div>
+      </div>
+      {% endblock %}
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Soluciones Innovadoras</h1>
-                <p>Transformamos ideas en realidad con tecnología de vanguardia</p>
-                <a href="#servicios" class="cta-button">Conocer Más</a>
-            </div>
-        </div>
-    </section>
-
-    <main class="container">
-        <section id="servicios" class="content-section">
-            <h2 class="section-title">Nuestros Servicios</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Desarrollo Web</h3>
-                    <p>Creamos sitios web modernos y responsivos que destacan en el mercado digital actual.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Apps Móviles</h3>
-                    <p>Desarrollamos aplicaciones móviles intuitivas para iOS y Android.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">☁️</div>
-                    <h3>Cloud Solutions</h3>
-                    <p>Implementamos soluciones en la nube escalables y seguras para tu negocio.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>150+</h3>
-                        <p>Proyectos Completados</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>50+</h3>
-                        <p>Clientes Satisfechos</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>5</h3>
-                        <p>Años de Experiencia</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>24/7</h3>
-                        <p>Soporte Técnico</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <main>
+      {% block content %}
+      <!-- El contenido específico de cada página se insertará aquí -->
+      {% endblock %}
     </main>
 
+    <hr />
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <p>📧 info@tuempresa.com</p>
-                    <p>📞 +1 (555) 123-4567</p>
-                    <p>📍 123 Calle Principal, Ciudad</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Servicios</h3>
-                    <p><a href="#">Desarrollo Web</a></p>
-                    <p><a href="#">Apps Móviles</a></p>
-                    <p><a href="#">Consultoría IT</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Enlaces</h3>
-                    <p><a href="#">Política de Privacidad</a></p>
-                    <p><a href="#">Términos de Servicio</a></p>
-                    <p><a href="#">Blog</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 TuEmpresa. Todos los derechos reservados.</p>
-            </div>
-        </div>
+      <p>&copy; 2025 Nicolas Calbullanca</p>
     </footer>
-
-    <script src="{% static 'javascript/script.js' %}"></script>
-</body>
+  </body>
 </html>
