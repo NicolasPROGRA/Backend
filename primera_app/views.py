@@ -1,77 +1,23 @@
-from django.shortcuts import render
-from rest_framework import viewsets
-
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import logout, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
-from django.contrib import messages
+from rest_framework.permissions import IsAuthenticated
 
-from .serializer import Nacionalidad_Serializer, Autor_Serializer, Comuna_Serializer, Direccion_Serializer, Biblioteca_Serializer, Libro_Serializer, TipoCategoria_Serializer, Categoria_Serializer, Lector_Serializer, Prestamo_Serializer
+from rest_framework import viewsets
+from rest_framework.authentication import SessionAuthentication
+
+from .serializer import NacionalidadSerializer, AutorSerializer, ComunaSerializer, DireccionSerializer, BibliotecaSerializer, LibroSerializer, TipoCategoriaSerializer, CategoriaSerializer, LectorSerializer, PrestamoSerializer
 from .models import Nacionalidad, Autor, Comuna, Direccion, Biblioteca, Lector, TipoCategoria, Categoria, Libro, Prestamo
 
 # Create your views here.
-
-
-class NacionalidadViewSet(viewsets.ModelViewSet):
-    queryset = Nacionalidad.objects.all()
-    serializer_class = Nacionalidad_Serializer
-
-
-class AutorViewSet(viewsets.ModelViewSet):
-    queryset = Autor.objects.all()
-    serializer_class = Autor_Serializer
-
-
-class ComunaViewSet(viewsets.ModelViewSet):
-    queryset = Comuna.objects.all()
-    serializer_class = Comuna_Serializer
-
-
-class DireccionViewSet(viewsets.ModelViewSet):
-    queryset = Direccion.objects.all()
-    serializer_class = Direccion_Serializer
-
-
-class BibliotecaViewSet(viewsets.ModelViewSet):
-    queryset = Biblioteca.objects.all()
-    serializer_class = Biblioteca_Serializer
-
-
-class LectorViewSet(viewsets.ModelViewSet):
-    queryset = Lector.objects.all()
-    serializer_class = Lector_Serializer
-
-
-class TipoCategoriaViewSet(viewsets.ModelViewSet):
-    queryset = TipoCategoria.objects.all()
-    serializer_class = TipoCategoria_Serializer
-
-
-class CategoriaViewSet(viewsets.ModelViewSet):
-    queryset = Categoria.objects.all()
-    serializer_class = Categoria_Serializer
-
-
-class LibroViewSet(viewsets.ModelViewSet):
-    queryset = Libro.objects.all()
-    serializer_class = Libro_Serializer
-
-
-class PrestamoViewSet(viewsets.ModelViewSet):
-    queryset = Prestamo.objects.all()
-    serializer_class = Prestamo_Serializer
-
-
-
-def pagina_html(request):
-    return render(request, 'pagina.html')
-
 def logout_view(request):
     # Cierra la sesión del usuario y limpia la data de SESSION
     logout(request)
     # Redirige a la página de inicio de sesión
     return redirect('login')
+
 
 def registro(request):
     if request.method == 'POST':
@@ -90,4 +36,81 @@ def registro(request):
 
 @login_required
 def pagina_inicio(request):
-    return render(request, 'primera_app/pagina.html')
+    # Almacenar data en SESSION
+    request.session['mensaje_bienvenida'] = '¡Bienvenido!'
+    # Obtener data desde SESSION
+    mensaje_bienvenida = request.session.get('mensaje_bienvenida')
+    # Remover data desde SESSION
+    if 'mensaje_bienvenida' in request.session:
+        del request.session['mensaje_bienvenida']
+    return render(request, 'primera_app/inicio.html', {'message': mensaje_bienvenida})
+
+
+class NacionalidadViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Nacionalidad.objects.all()
+    serializer_class = NacionalidadSerializer
+
+
+class AutorViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Autor.objects.all()
+    serializer_class = AutorSerializer
+
+
+class ComunaViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Comuna.objects.all()
+    serializer_class = ComunaSerializer
+
+
+class DireccionViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Direccion.objects.all()
+    serializer_class = DireccionSerializer
+
+
+class BibliotecaViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Biblioteca.objects.all()
+    serializer_class = BibliotecaSerializer
+
+
+class LectorViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Lector.objects.all()
+    serializer_class = LectorSerializer
+
+
+class TipoCategoriaViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = TipoCategoria.objects.all()
+    serializer_class = TipoCategoriaSerializer
+
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+
+
+class LibroViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Libro.objects.all()
+    serializer_class = LibroSerializer
+
+
+class PrestamoViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Prestamo.objects.all()
+    serializer_class = PrestamoSerializer

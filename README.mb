@@ -15,6 +15,9 @@ django-admin startapp primera_app (pv)
 pip install mysqlclient
 pip install djangorestframework 
 pip install -U drf-yasg 
+pip install python-decouple
+pip install iconic
+pip install rutificador
 python manage.py migrate
 python manage.py makemigrations
 python manage.py migrate
